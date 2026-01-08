@@ -77,7 +77,7 @@ const BookingSection = () => {
               <div className="bg-background border border-border overflow-hidden">
                 <div
                   className="calendly-inline-widget"
-                  data-url="https://calendly.com/YOUR-USERNAME/30min?hide_gdpr_banner=1"
+                  data-url="https://calendly.com/anishudasi14/30min"
                   style={{ minWidth: "320px", height: "700px" }}
                 />
 
@@ -86,7 +86,7 @@ const BookingSection = () => {
                   <div className="p-8 text-center">
                     <p className="text-muted-foreground mb-4">Please enable JavaScript to view the booking calendar.</p>
                     <a
-                      href="https://calendly.com/your-username/30min"
+                      href="https://calendly.com/anishudasi14/30min"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-primary hover:underline"
@@ -121,12 +121,6 @@ const BookingSection = () => {
               >
                 calendly.com
               </a>
-            </li>
-            <li>Set up your availability and connect Google Calendar/Zoom</li>
-            <li>Copy your event link (e.g., calendly.com/yourname/30min)</li>
-            <li>Replace "your-username" in the code with your actual Calendly username</li>
-            <li>Remove this instruction box after setup</li>
-          </ol>
         </div>
       </div>
     </section>
