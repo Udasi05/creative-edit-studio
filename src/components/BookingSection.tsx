@@ -75,13 +75,9 @@ const BookingSection = () => {
             {/* Calendly Embed */}
             <div className="lg:col-span-2">
               <div className="bg-background border border-border overflow-hidden">
-                {/* 
-                  IMPORTANT: Replace the URL below with your actual Calendly link
-                  Example: https://calendly.com/your-username/30min
-                */}
                 <div
                   className="calendly-inline-widget"
-                  data-url="https://calendly.com/anishudasi14/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=e8eaed&primary_color=e89c1d"
+                  data-url="https://calendly.com/anishudasi14/30min"
                   style={{ minWidth: "320px", height: "700px" }}
                 />
 
@@ -118,7 +114,7 @@ const BookingSection = () => {
             <li>
               Create a free account at{" "}
               <a
-                href="https://calendly.com"
+                href="https://calendly.com/?redirect=false"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"
