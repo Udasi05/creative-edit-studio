@@ -121,6 +121,11 @@ const BookingSection = () => {
               >
                 calendly.com
               </a>
+            </li>
+            <li>Set up your availability and connect Google Calendar/Zoom</li>
+            <li>Replace "YOUR-USERNAME" in the code with your Calendly username</li>
+            <li>Remove this instruction box once configured</li>
+          </ol>
         </div>
       </div>
     </section>
