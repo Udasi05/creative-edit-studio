@@ -77,7 +77,7 @@ const BookingSection = () => {
               <div className="bg-background border border-border overflow-hidden">
                 <div
                   className="calendly-inline-widget"
-                  data-url="https://calendly.com/anishudasi14/30min"
+                  data-url="https://calendly.com/YOUR-USERNAME/30min?hide_gdpr_banner=1"
                   style={{ minWidth: "320px", height: "700px" }}
                 />
 
