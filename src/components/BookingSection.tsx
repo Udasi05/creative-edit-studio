@@ -19,7 +19,7 @@ const BookingSection = () => {
     return () => {
       // Cleanup script on unmount
       const existingScript = document.querySelector(
-        'script[src="https://assets.calendly.com/assets/external/widget.js"]'
+        'script[src="https://assets.calendly.com/assets/external/widget.js"]',
       );
       if (existingScript) {
         existingScript.remove();
@@ -31,15 +31,11 @@ const BookingSection = () => {
     <section id="booking" className="py-24 bg-card">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <p className="text-primary font-medium tracking-widest uppercase mb-4">
-            Schedule a Meeting
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-            Book a Call
-          </h2>
+          <p className="text-primary font-medium tracking-widest uppercase mb-4">Schedule a Meeting</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Book a Call</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Let's discuss your project! Pick a time that works for you and I'll send 
-            you a Google Meet or Zoom link automatically.
+            Let's discuss your project! Pick a time that works for you and I'll send you a Google Meet or Zoom link
+            automatically.
           </p>
         </div>
 
@@ -53,9 +49,7 @@ const BookingSection = () => {
                     <Video className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-foreground">
-                      Discovery Call
-                    </h3>
+                    <h3 className="text-lg font-semibold text-foreground">Discovery Call</h3>
                     <p className="text-sm text-muted-foreground">30 minutes</p>
                   </div>
                 </div>
@@ -72,9 +66,7 @@ const BookingSection = () => {
                 <div className="pt-6 border-t border-border">
                   <div className="flex items-center gap-3 text-muted-foreground">
                     <Calendar className="w-5 h-5" />
-                    <span className="text-sm">
-                      Select a date and time from the calendar
-                    </span>
+                    <span className="text-sm">Select a date and time from the calendar</span>
                   </div>
                 </div>
               </div>
@@ -89,16 +81,14 @@ const BookingSection = () => {
                 */}
                 <div
                   className="calendly-inline-widget"
-                  data-url="https://calendly.com/your-username/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=e8eaed&primary_color=e89c1d"
+                  data-url="https://calendly.com/anishudasi14/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=e8eaed&primary_color=e89c1d"
                   style={{ minWidth: "320px", height: "700px" }}
                 />
-                
+
                 {/* Fallback message if Calendly doesn't load */}
                 <noscript>
                   <div className="p-8 text-center">
-                    <p className="text-muted-foreground mb-4">
-                      Please enable JavaScript to view the booking calendar.
-                    </p>
+                    <p className="text-muted-foreground mb-4">Please enable JavaScript to view the booking calendar.</p>
                     <a
                       href="https://calendly.com/your-username/30min"
                       target="_blank"
@@ -125,7 +115,17 @@ const BookingSection = () => {
             Setup Instructions
           </h4>
           <ol className="text-sm text-muted-foreground space-y-2 list-decimal list-inside">
-            <li>Create a free account at <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">calendly.com</a></li>
+            <li>
+              Create a free account at{" "}
+              <a
+                href="https://calendly.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                calendly.com
+              </a>
+            </li>
             <li>Set up your availability and connect Google Calendar/Zoom</li>
             <li>Copy your event link (e.g., calendly.com/yourname/30min)</li>
             <li>Replace "your-username" in the code with your actual Calendly username</li>
