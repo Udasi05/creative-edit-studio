@@ -1,63 +1,31 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Calendar, Clock, Video, CheckCircle } from "lucide-react";
-import { toast } from "sonner";
+import { useEffect } from "react";
+import { Calendar, Video, CheckCircle2 } from "lucide-react";
 
-const timeSlots = [
-  "9:00 AM",
-  "10:00 AM",
-  "11:00 AM",
-  "1:00 PM",
-  "2:00 PM",
-  "3:00 PM",
-  "4:00 PM",
-];
-
-const meetingTypes = [
-  { id: "discovery", name: "Discovery Call", duration: "30 min" },
-  { id: "consultation", name: "Project Consultation", duration: "45 min" },
-  { id: "detailed", name: "Detailed Discussion", duration: "60 min" },
+const benefits = [
+  "Free 30-minute consultation",
+  "Discuss your project requirements",
+  "Get a custom quote",
+  "Automatic Google Meet/Zoom link",
 ];
 
 const BookingSection = () => {
-  const [selectedDate, setSelectedDate] = useState("");
-  const [selectedTime, setSelectedTime] = useState("");
-  const [selectedType, setSelectedType] = useState("discovery");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    notes: "",
-  });
+  useEffect(() => {
+    // Load Calendly widget script
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!selectedDate || !selectedTime) {
-      toast.error("Please select a date and time");
-      return;
-    }
-    
-    toast.success(
-      "Meeting request sent! You'll receive a confirmation email with the meeting link shortly."
-    );
-    
-    // Reset form
-    setSelectedDate("");
-    setSelectedTime("");
-    setFormData({ name: "", email: "", notes: "" });
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  // Get minimum date (tomorrow)
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  const minDate = tomorrow.toISOString().split("T")[0];
+    return () => {
+      // Cleanup script on unmount
+      const existingScript = document.querySelector(
+        'script[src="https://assets.calendly.com/assets/external/widget.js"]'
+      );
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
 
   return (
     <section id="booking" className="py-24 bg-card">
@@ -70,134 +38,99 @@ const BookingSection = () => {
             Book a Call
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Let's discuss your project! Schedule a video call at your convenience. 
-            Meeting links will be sent via Google Meet or Zoom.
+            Let's discuss your project! Pick a time that works for you and I'll send 
+            you a Google Meet or Zoom link automatically.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-background border border-border p-8 md:p-12">
-            {/* Meeting Types */}
-            <div className="mb-10">
-              <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-                <Video className="w-5 h-5 text-primary" />
-                Select Meeting Type
-              </h3>
-              <div className="grid sm:grid-cols-3 gap-4">
-                {meetingTypes.map((type) => (
-                  <button
-                    key={type.id}
-                    type="button"
-                    onClick={() => setSelectedType(type.id)}
-                    className={`p-4 border text-left transition-all ${
-                      selectedType === type.id
-                        ? "border-primary bg-primary/10"
-                        : "border-border hover:border-primary/50"
-                    }`}
-                  >
-                    <div className="flex items-center gap-2 mb-1">
-                      {selectedType === type.id && (
-                        <CheckCircle className="w-4 h-4 text-primary" />
-                      )}
-                      <span className="font-medium text-foreground">
-                        {type.name}
-                      </span>
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Benefits Sidebar */}
+            <div className="lg:col-span-1">
+              <div className="bg-background border border-border p-8 h-full">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-primary/10 flex items-center justify-center">
+                    <Video className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground">
+                      Discovery Call
+                    </h3>
+                    <p className="text-sm text-muted-foreground">30 minutes</p>
+                  </div>
+                </div>
+
+                <div className="space-y-4 mb-8">
+                  {benefits.map((benefit, index) => (
+                    <div key={index} className="flex items-center gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                      <span className="text-foreground">{benefit}</span>
                     </div>
-                    <span className="text-sm text-muted-foreground">
-                      {type.duration}
+                  ))}
+                </div>
+
+                <div className="pt-6 border-t border-border">
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <Calendar className="w-5 h-5" />
+                    <span className="text-sm">
+                      Select a date and time from the calendar
                     </span>
-                  </button>
-                ))}
+                  </div>
+                </div>
               </div>
             </div>
 
-            <form onSubmit={handleSubmit}>
-              <div className="grid md:grid-cols-2 gap-10">
-                {/* Date & Time Selection */}
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-                      <Calendar className="w-5 h-5 text-primary" />
-                      Select Date
-                    </h3>
-                    <Input
-                      type="date"
-                      min={minDate}
-                      value={selectedDate}
-                      onChange={(e) => setSelectedDate(e.target.value)}
-                      className="bg-card"
-                      required
-                    />
+            {/* Calendly Embed */}
+            <div className="lg:col-span-2">
+              <div className="bg-background border border-border overflow-hidden">
+                {/* 
+                  IMPORTANT: Replace the URL below with your actual Calendly link
+                  Example: https://calendly.com/your-username/30min
+                */}
+                <div
+                  className="calendly-inline-widget"
+                  data-url="https://calendly.com/your-username/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=e8eaed&primary_color=e89c1d"
+                  style={{ minWidth: "320px", height: "700px" }}
+                />
+                
+                {/* Fallback message if Calendly doesn't load */}
+                <noscript>
+                  <div className="p-8 text-center">
+                    <p className="text-muted-foreground mb-4">
+                      Please enable JavaScript to view the booking calendar.
+                    </p>
+                    <a
+                      href="https://calendly.com/your-username/30min"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline"
+                    >
+                      Or book directly on Calendly →
+                    </a>
                   </div>
-
-                  <div>
-                    <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
-                      <Clock className="w-5 h-5 text-primary" />
-                      Select Time
-                    </h3>
-                    <div className="grid grid-cols-2 gap-2">
-                      {timeSlots.map((time) => (
-                        <button
-                          key={time}
-                          type="button"
-                          onClick={() => setSelectedTime(time)}
-                          className={`py-3 px-4 text-sm font-medium border transition-all ${
-                            selectedTime === time
-                              ? "border-primary bg-primary text-primary-foreground"
-                              : "border-border text-foreground hover:border-primary/50"
-                          }`}
-                        >
-                          {time}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Contact Details */}
-                <div className="space-y-6">
-                  <h3 className="text-lg font-semibold text-foreground mb-4">
-                    Your Details
-                  </h3>
-                  <Input
-                    name="name"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="bg-card"
-                  />
-                  <Input
-                    name="email"
-                    type="email"
-                    placeholder="Your Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="bg-card"
-                  />
-                  <Textarea
-                    name="notes"
-                    placeholder="Tell me about your project (optional)"
-                    value={formData.notes}
-                    onChange={handleChange}
-                    rows={4}
-                    className="bg-card resize-none"
-                  />
-                </div>
+                </noscript>
               </div>
 
-              <div className="mt-10 pt-8 border-t border-border">
-                <Button type="submit" variant="hero" size="xl" className="w-full">
-                  <Video className="w-5 h-5" />
-                  Schedule Meeting
-                </Button>
-                <p className="text-center text-sm text-muted-foreground mt-4">
-                  You'll receive a confirmation email with the Google Meet/Zoom link
-                </p>
-              </div>
-            </form>
+              <p className="text-center text-sm text-muted-foreground mt-4">
+                Powered by Calendly • Your timezone will be detected automatically
+              </p>
+            </div>
           </div>
+        </div>
+
+        {/* Setup Instructions - Remove this after setting up */}
+        <div className="max-w-2xl mx-auto mt-12 p-6 bg-primary/10 border border-primary/20">
+          <h4 className="text-foreground font-semibold mb-2 flex items-center gap-2">
+            <Calendar className="w-5 h-5 text-primary" />
+            Setup Instructions
+          </h4>
+          <ol className="text-sm text-muted-foreground space-y-2 list-decimal list-inside">
+            <li>Create a free account at <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">calendly.com</a></li>
+            <li>Set up your availability and connect Google Calendar/Zoom</li>
+            <li>Copy your event link (e.g., calendly.com/yourname/30min)</li>
+            <li>Replace "your-username" in the code with your actual Calendly username</li>
+            <li>Remove this instruction box after setup</li>
+          </ol>
         </div>
       </div>
     </section>
