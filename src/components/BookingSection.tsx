@@ -103,14 +103,6 @@ const BookingSection = () => {
             </div>
           </div>
         </div>
-
-        {/* Setup Instructions - Remove this after setting up */}
-        <div className="max-w-2xl mx-auto mt-12 p-6 bg-primary/10 border border-primary/20">
-          <h4 className="text-foreground font-semibold mb-2 flex items-center gap-2">
-            <Calendar className="w-5 h-5 text-primary" />
-            Setup Instructions
-          </h4>
-        </div>
       </div>
     </section>
   );
