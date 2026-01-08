@@ -110,22 +110,6 @@ const BookingSection = () => {
             <Calendar className="w-5 h-5 text-primary" />
             Setup Instructions
           </h4>
-          <ol className="text-sm text-muted-foreground space-y-2 list-decimal list-inside">
-            <li>
-              Create a free account at{" "}
-              <a
-                href="https://calendly.com/?redirect=false"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                calendly.com
-              </a>
-            </li>
-            <li>Set up your availability and connect Google Calendar/Zoom</li>
-            <li>Replace "YOUR-USERNAME" in the code with your Calendly username</li>
-            <li>Remove this instruction box once configured</li>
-          </ol>
         </div>
       </div>
     </section>
