@@ -13,11 +13,38 @@ const ContactSection = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false);
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to a backend
-    toast.success("Message sent successfully! I'll get back to you soon.");
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setLoading(true);
+
+    try {
+      // Import dynamically to avoid SSR issues if this were Next.js, 
+      // but fine here. Using import() is cleaner for code splitting anyway.
+      const emailjs = (await import("@emailjs/browser")).default;
+
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || "",
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "",
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || ""
+      );
+
+      toast.success("Message sent successfully! I'll get back to you soon.");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      toast.error("Failed to send message. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (
@@ -113,9 +140,15 @@ const ContactSection = () => {
                 rows={6}
                 className="bg-background resize-none"
               />
-              <Button type="submit" variant="hero" size="lg" className="w-full">
-                <Send className="w-4 h-4" />
-                Send Message
+              <Button type="submit" variant="hero" size="lg" className="w-full" disabled={loading}>
+                {loading ? (
+                  <span className="flex items-center gap-2">Send Message...</span>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    Send Message
+                  </>
+                )}
               </Button>
             </form>
           </div>
