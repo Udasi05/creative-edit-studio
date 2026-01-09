@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Calendar, Video, CheckCircle2 } from "lucide-react";
-
+import { Analytics } from "@vercel/analytics/next"
 const benefits = [
   "Free 30-minute consultation",
   "Discuss your project requirements",

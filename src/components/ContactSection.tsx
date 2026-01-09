@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send, Linkedin, Instagram, Youtube, Twitter } from "lucide-react";
 import { toast } from "sonner";
-
+import { Analytics } from "@vercel/analytics/next"
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",

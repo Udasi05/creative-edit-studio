@@ -1,5 +1,5 @@
 import { Film, Award, Clock, Users } from "lucide-react";
-
+import { Analytics } from "@vercel/analytics/next"
 const stats = [
   { icon: Film, value: "250+", label: "Projects Completed" },
   { icon: Award, value: "5m+", label: "Total of views" },
