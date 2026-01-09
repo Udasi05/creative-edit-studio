@@ -12,51 +12,43 @@ import {
 const skills = [
   {
     icon: Palette,
-    title: "Color Grading",
-    description: "Expert color correction and grading to create the perfect mood and atmosphere for your footage",
-    tools: ["DaVinci Resolve", "Lumetri Color"],
+    title: "ShortForm & LongForm Video Editing",
+    description: "Seamless cutting, pacing, and storytelling to transform raw footage into compelling narratives",
   },
   {
     icon: Film,
-    title: "Video Editing",
-    description: "Seamless cutting, pacing, and storytelling to transform raw footage into compelling narratives",
-    tools: ["Premiere Pro", "Final Cut Pro"],
+    title: "Color Grading",
+    description: "Expert color correction and grading to create the perfect mood and atmosphere for your footage",
   },
   {
     icon: Sparkles,
     title: "Motion Graphics",
     description: "Eye-catching animations, titles, and visual elements that enhance your video content",
-    tools: ["After Effects", "Motion"],
   },
   {
     icon: Volume2,
-    title: "Sound Design",
+    title: "Audio Cleanup & Sound Design",
     description: "Professional audio mixing, sound effects, and music integration for immersive experiences",
-    tools: ["Audition", "Pro Tools"],
   },
   {
     icon: Wand2,
-    title: "Visual Effects",
+    title: "Talking-head & Creator Content",
     description: "Advanced VFX compositing, green screen work, and special effects creation",
-    tools: ["Nuke", "After Effects"],
   },
   {
     icon: MonitorPlay,
-    title: "4K/8K Editing",
-    description: "High-resolution video editing optimized for cinema and broadcast quality output",
-    tools: ["DaVinci Resolve", "Premiere"],
+    title: "Compositing",
+    description: "Multi-layer compositing and advanced masking for complex visual scenarios",    
   },
   {
     icon: Camera,
-    title: "Cinematography",
-    description: "Understanding of camera work, lighting, and composition for better editing decisions",
-    tools: ["On-set Collaboration"],
+    title: "Platform Specific Optimization",
+    description: "Optimizing videos for specific platforms like YouTube, Instagram, and TikTok",
   },
   {
     icon: Layers,
-    title: "Compositing",
-    description: "Multi-layer compositing and advanced masking for complex visual scenarios",
-    tools: ["Fusion", "After Effects"],
+    title: "Post Production Consultation",
+    description: "Providing expert guidance and support to clients by sharing professional knowledge and experience in post-production.",
   },
 ];
 
@@ -81,9 +73,9 @@ const SkillsSection = () => {
           {skills.map((skill, index) => (
             <div
               key={index}
-              className="bg-background p-6 border border-border hover:border-primary/50 transition-all duration-300 group hover:-translate-y-1"
+              className="bg-background p-6 border border-border hover:border-primary/50 transition-all duration-300 group hover:-translate-y-1 rounded-[2rem]"
             >
-              <div className="w-14 h-14 bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
+              <div className="w-14 h-14 bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors rounded-2xl">
                 <skill.icon className="w-7 h-7 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-3">
@@ -92,16 +84,6 @@ const SkillsSection = () => {
               <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                 {skill.description}
               </p>
-              <div className="flex flex-wrap gap-2">
-                {skill.tools.map((tool, toolIndex) => (
-                  <span
-                    key={toolIndex}
-                    className="text-xs bg-secondary text-secondary-foreground px-3 py-1"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
             </div>
           ))}
         </div>

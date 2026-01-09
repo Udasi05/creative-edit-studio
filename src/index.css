@@ -10,45 +10,52 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark cinematic theme - professional for video editors */
-    --background: 220 20% 7%;
-    --foreground: 210 20% 92%;
+    /* User's Tropical Sunrise Theme */
+    /* Hex: FF9F1C, FFBF69, FFFFFF, CBF3F0, 2EC4B6 */
 
-    --card: 220 18% 10%;
-    --card-foreground: 210 20% 92%;
+    --background: 0 0% 100%;
+    --foreground: 174 62% 10%;
+    /* Derived Dark Teal for text contrast */
 
-    --popover: 220 18% 12%;
-    --popover-foreground: 210 20% 92%;
+    --card: 0 0% 100%;
+    --card-foreground: 174 62% 10%;
 
-    --primary: 35 95% 55%;
-    --primary-foreground: 220 20% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 174 62% 10%;
 
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 210 20% 85%;
+    --primary: 35 100% 55%;
+    /* FF9F1C */
+    --primary-foreground: 0 0% 100%;
 
-    --muted: 220 15% 15%;
-    --muted-foreground: 210 15% 55%;
+    --secondary: 174 62% 47%;
+    /* 2EC4B6 */
+    --secondary-foreground: 0 0% 100%;
 
-    --accent: 220 15% 20%;
-    --accent-foreground: 210 20% 92%;
+    --muted: 176 67% 87%;
+    /* CBF3F0 */
+    --muted-foreground: 174 40% 40%;
 
-    --destructive: 0 72% 50%;
-    --destructive-foreground: 0 0% 98%;
+    --accent: 34 100% 71%;
+    /* FFBF69 */
+    --accent-foreground: 174 62% 10%;
 
-    --border: 220 15% 18%;
-    --input: 220 15% 18%;
-    --ring: 35 95% 55%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 176 67% 80%;
+    --input: 176 67% 80%;
+    --ring: 35 100% 55%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 220 18% 8%;
-    --sidebar-foreground: 210 20% 92%;
-    --sidebar-primary: 35 95% 55%;
-    --sidebar-primary-foreground: 220 20% 7%;
-    --sidebar-accent: 220 15% 15%;
-    --sidebar-accent-foreground: 210 20% 92%;
-    --sidebar-border: 220 15% 18%;
-    --sidebar-ring: 35 95% 55%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 174 62% 10%;
+    --sidebar-primary: 35 100% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 176 67% 87%;
+    --sidebar-accent-foreground: 174 62% 10%;
+    --sidebar-border: 176 67% 80%;
+    --sidebar-ring: 35 100% 55%;
 
     --chart-1: 35 95% 55%;
     --chart-2: 195 85% 50%;

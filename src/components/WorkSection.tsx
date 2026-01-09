@@ -1,61 +1,48 @@
 import { useState } from "react";
-import { Play, ExternalLink } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Play } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const projects = [
   {
     id: 1,
-    title: "Brand Commercial",
-    category: "Commercial",
-    thumbnail: "https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&h=400&fit=crop",
+    title: "Commercial Color Grading",
+    video: "/Work/CG ig.mp4",
     description: "High-end product commercial with cinematic color grading",
   },
   {
     id: 2,
-    title: "Music Video",
-    category: "Music",
-    thumbnail: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
+    title: "Music Video Production",
+    video: "/Work/BTPT ig.mp4",
     description: "Creative music video with dynamic transitions and effects",
   },
   {
     id: 3,
-    title: "Documentary",
-    category: "Documentary",
-    thumbnail: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&h=400&fit=crop",
-    description: "Award-winning documentary with storytelling focus",
+    title: "Motion Graphics Showcase",
+    video: "/Work/Nataleh Nicole Replit D2.mp4",
+    description: "Motion graphics for a product presentation",
   },
   {
     id: 4,
-    title: "Corporate Video",
-    category: "Corporate",
-    thumbnail: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=600&h=400&fit=crop",
-    description: "Professional corporate presentation and training videos",
+    title: "Fashion Film",
+    video: "/Work/SB Garment 1 .mp4",
+    description: "Post production for a fashion brand commercial",
   },
   {
     id: 5,
-    title: "Wedding Film",
-    category: "Wedding",
-    thumbnail: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop",
-    description: "Cinematic wedding film with emotional storytelling",
+    title: "Corporate Documentary",
+    video: "/Work/Dr Asmi Berry sample edit.mp4",
+    description: "Corporate video with cinematic storytelling",
   },
   {
     id: 6,
-    title: "Short Film",
-    category: "Film",
-    thumbnail: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&h=400&fit=crop",
-    description: "Narrative short film with full post-production",
+    title: "Wedding Highlights",
+    video: "/Work/TW loop.mp4",
+    description: "Wedding video with full post-production",
   },
 ];
 
-const categories = ["All", "Commercial", "Music", "Documentary", "Corporate", "Wedding", "Film"];
-
 const WorkSection = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
-
-  const filteredProjects =
-    activeCategory === "All"
-      ? projects
-      : projects.filter((project) => project.category === activeCategory);
+  const [selectedProject, setSelectedProject] = useState<(typeof projects)[0] | null>(null);
 
   return (
     <section id="work" className="py-24 bg-background">
@@ -68,65 +55,65 @@ const WorkSection = () => {
             Featured Work
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            A showcase of my best video editing projects across various categories
+            A showcase of my best video editing projects
           </p>
-        </div>
-
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={activeCategory === category ? "default" : "outline"}
-              size="sm"
-              onClick={() => setActiveCategory(category)}
-            >
-              {category}
-            </Button>
-          ))}
         </div>
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
+          {projects.map((project) => (
             <div
               key={project.id}
-              className="group relative overflow-hidden bg-card border border-border hover:border-primary/50 transition-all duration-300"
+              className="group relative overflow-hidden bg-card border border-border hover:border-primary/50 transition-all duration-300 rounded-2xl cursor-pointer"
+              onClick={() => setSelectedProject(project)}
             >
-              {/* Thumbnail */}
+              {/* Thumbnail (Video Teaser) */}
               <div className="relative aspect-video overflow-hidden">
-                <img
-                  src={project.thumbnail}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                <video
+                  src={project.video}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  muted
+                  loop
+                  autoPlay
+                  playsInline
                 />
-                <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="flex gap-3">
-                    <button className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:scale-110 transition-transform">
-                      <Play size={20} />
-                    </button>
-                    <button className="w-12 h-12 rounded-full bg-secondary text-secondary-foreground flex items-center justify-center hover:scale-110 transition-transform">
-                      <ExternalLink size={20} />
-                    </button>
+                <div className="absolute inset-0 bg-background/50 group-hover:bg-background/40 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                  <div className="w-16 h-16 rounded-full bg-primary/90 text-primary-foreground flex items-center justify-center backdrop-blur-sm shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
+                    <Play size={24} fill="currentColor" />
                   </div>
                 </div>
               </div>
 
               {/* Info */}
               <div className="p-6">
-                <span className="text-primary text-sm font-medium">
-                  {project.category}
+                <span className="text-primary text-sm font-medium color-orange-500">
                 </span>
-                <h3 className="text-xl font-semibold text-foreground mt-2 mb-2">
+                <h3 className="text-xl font-semibold text-foreground mt-2 mb-2 color-orange-100">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-muted-foreground text-sm color-orange-100">
                   {project.description}
                 </p>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Video Modal */}
+        <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
+          <DialogContent className="max-w-4xl p-0 overflow-hidden bg-black border-none ring-0">
+            {selectedProject && (
+              <div className="aspect-video w-full">
+                <video
+                  src={selectedProject.video}
+                  className="w-full h-full"
+                  controls
+                  autoPlay
+                />
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );

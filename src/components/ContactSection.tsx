@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Send, Linkedin, Instagram, Youtube } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Linkedin, Instagram, Youtube, Twitter } from "lucide-react";
 import { toast } from "sonner";
 
 const ContactSection = () => {
@@ -30,27 +30,28 @@ const ContactSection = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "hello@editorpro.com",
-      href: "mailto:hello@editorpro.com",
+      value: "sahilbhanushalioff2011@gmail.com",
+      href: "mailto:sahilbhanushalioff2011@gmail.com",
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      value: "+91 7506236961",
+      href: "tel:+917506236961",
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "Los Angeles, CA",
-      href: "#",
+      value: "Mumbai, Maharashtra, India",
+      href: "https://www.google.com/maps/place/Mumbai",
     },
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Youtube, href: "#", label: "YouTube" },
+    { icon: Linkedin, href: "https://linkedin.com/in/sahil-bhanushali-148564396", label: "LinkedIn" },
+    { icon: Instagram, href: "https://www.instagram.com/thats.bee.cut?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
+    { icon: Twitter, href: "https://x.com/SahilB65552", label: "Twitter" },
+    { icon: Mail, href: "mailto:sahilbhanushalioff2011@gmail.com", label: "Email" },
   ];
 
   return (
@@ -64,14 +65,14 @@ const ContactSection = () => {
             Let's Work Together
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind? I'd love to hear about it. Send me a message 
+            Have a project in mind? I'd love to hear about it. Send me a message
             and let's create something amazing together.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Form */}
-          <div className="bg-card p-8 border border-border">
+          <div className="bg-card p-8 border border-border rounded-2xl">
             <h3 className="text-xl font-semibold text-foreground mb-6">
               Send a Message
             </h3>
@@ -130,9 +131,9 @@ const ContactSection = () => {
                   <a
                     key={index}
                     href={item.href}
-                    className="flex items-center gap-4 p-4 bg-card border border-border hover:border-primary/50 transition-colors group"
+                    className="flex items-center gap-4 p-4 bg-card border border-border hover:border-primary/50 transition-colors group rounded-2xl"
                   >
-                    <div className="w-12 h-12 bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <div className="w-12 h-12 bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors rounded-xl">
                       <item.icon className="w-5 h-5 text-primary" />
                     </div>
                     <div>
@@ -154,7 +155,7 @@ const ContactSection = () => {
                     key={index}
                     href={social.href}
                     aria-label={social.label}
-                    className="w-12 h-12 bg-card border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+                    className="w-12 h-12 bg-card border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all rounded-xl"
                   >
                     <social.icon className="w-5 h-5" />
                   </a>

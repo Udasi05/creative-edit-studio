@@ -43,7 +43,7 @@ const BookingSection = () => {
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Benefits Sidebar */}
             <div className="lg:col-span-1">
-              <div className="bg-background border border-border p-8 h-full">
+              <div className="bg-background border border-border p-8 h-full rounded-2xl">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-primary/10 flex items-center justify-center">
                     <Video className="w-6 h-6 text-primary" />
@@ -74,10 +74,10 @@ const BookingSection = () => {
 
             {/* Calendly Embed */}
             <div className="lg:col-span-2">
-              <div className="bg-background border border-border overflow-hidden">
+              <div className="bg-background border border-border overflow-hidden rounded-2xl">
                 <div
                   className="calendly-inline-widget"
-                  data-url="https://calendly.com/anishudasi14/30min"
+                  data-url="https://calendly.com/sahilbhanushalioff2011/new-meeting"
                   style={{ minWidth: "320px", height: "700px" }}
                 />
 
@@ -86,7 +86,7 @@ const BookingSection = () => {
                   <div className="p-8 text-center">
                     <p className="text-muted-foreground mb-4">Please enable JavaScript to view the booking calendar.</p>
                     <a
-                      href="https://calendly.com/anishudasi14/30min"
+                      href="https://calendly.com/sahilbhanushalioff2011/new-meeting"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-primary hover:underline"

@@ -1,4 +1,4 @@
-import { Linkedin, Instagram, Youtube, Mail } from "lucide-react";
+import { Linkedin, Instagram, Youtube, Mail, Twitter } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -17,15 +17,17 @@ const Footer = () => {
     "Color Grading",
     "Motion Graphics",
     "Sound Design",
-    "Visual Effects",
-    "Consultation",
+    "Talking-head & Creator Content",
+    "Compositing",
+    "Platform Specific Optimization",
+    "Post Production Consultation",
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Youtube, href: "#", label: "YouTube" },
-    { icon: Mail, href: "mailto:hello@editorpro.com", label: "Email" },
+    { icon: Linkedin, href: "https://linkedin.com/in/sahil-bhanushali-148564396", label: "LinkedIn" },
+    { icon: Instagram, href: "https://www.instagram.com/thats.bee.cut?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
+    { icon: Twitter, href: "https://x.com/SahilB65552", label: "Twitter" },
+    { icon: Mail, href: "mailto:sahilbhanushalioff2011@gmail.com", label: "Email" },
   ];
 
   const scrollToSection = (href: string) => {
@@ -46,7 +48,7 @@ const Footer = () => {
               onClick={(e) => { e.preventDefault(); scrollToSection("#home"); }}
               className="text-2xl font-bold text-foreground hover:text-primary transition-colors"
             >
-              EDITOR<span className="text-primary">PRO</span>
+              EDITOR<span className="text-primary">SB</span>
             </a>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Professional video editing services that bring your vision to life 
@@ -99,16 +101,16 @@ const Footer = () => {
           <div>
             <h4 className="text-foreground font-semibold mb-6">Get in Touch</h4>
             <div className="space-y-3 text-muted-foreground">
-              <p>hello@editorpro.com</p>
-              <p>+1 (555) 123-4567</p>
-              <p>Los Angeles, CA</p>
+              <p>sahilbhanushalioff2011@gmail.com</p>
+              <p>+91 7506236961</p>
+              <p>Mumbai, Maharashtra, India</p>
             </div>
           </div>
         </div>
 
         <div className="border-t border-border mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} EditorPro. All rights reserved.
+            © {currentYear} EDITORSB. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors">

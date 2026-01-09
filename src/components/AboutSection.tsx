@@ -1,9 +1,9 @@
 import { Film, Award, Clock, Users } from "lucide-react";
 
 const stats = [
-  { icon: Film, value: "500+", label: "Projects Completed" },
-  { icon: Award, value: "10+", label: "Years Experience" },
-  { icon: Users, value: "200+", label: "Happy Clients" },
+  { icon: Film, value: "250+", label: "Projects Completed" },
+  { icon: Award, value: "5m+", label: "Total of views" },
+  { icon: Users, value: "30+", label: "Happy Clients" },
   { icon: Clock, value: "24/7", label: "Availability" },
 ];
 
@@ -22,19 +22,22 @@ const AboutSection = () => {
             </h2>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                With over a decade of experience in video editing, I specialize in 
-                creating visually stunning content that resonates with audiences. 
-                From corporate videos to cinematic productions, I bring technical 
+                With over a two years of experience in video editing, I specialize in
+                creating visually stunning content that resonates with audiences.
+                From corporate videos to cinematic productions, I bring technical
                 expertise and creative vision to every project.
               </p>
               <p>
-                My expertise spans across color grading, motion graphics, sound design, 
-                and visual effects. I work with industry-standard tools including 
-                DaVinci Resolve, Adobe Premiere Pro, After Effects, and Final Cut Pro.
-              </p>
-              <p>
-                I believe every piece of footage tells a story—my job is to bring 
-                that story to life in the most compelling way possible.
+                I’m a video editor who helps creators and brands turn raw footage into clean, high-retention
+                videos that actually hold attention.
+                My focus is simple: tighter pacing, stronger storytelling, and edits that keep viewers watching till
+                the end, not just “good-looking” videos.
+                I work primarily with talking-head content, reels, and long-form videos, adding motion graphics,
+                B-roll, sound design, and structure where most videos fall flat.
+                If your content feels dull, unstructured, or isn’t converting views into engagement, that’s exactly
+                the problem I fix.
+                No templates. No overediting. Just edits that serve the message and the platform.
+                If you want content that looks professional and performs, let’s talk.
               </p>
             </div>
           </div>
@@ -44,7 +47,7 @@ const AboutSection = () => {
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="bg-background p-8 border border-border hover:border-primary/50 transition-colors group"
+                className="bg-background p-8 border border-border hover:border-primary/50 transition-colors group rounded-2xl"
               >
                 <stat.icon className="w-10 h-10 text-primary mb-4 group-hover:scale-110 transition-transform" />
                 <p className="text-3xl font-bold text-foreground mb-1">

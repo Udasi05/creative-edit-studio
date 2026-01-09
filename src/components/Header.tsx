@@ -30,7 +30,7 @@ const Header = () => {
             onClick={(e) => { e.preventDefault(); scrollToSection("#home"); }}
             className="text-2xl font-bold text-foreground hover:text-primary transition-colors"
           >
-            EDITOR<span className="text-primary">PRO</span>
+            EDITOR<span className="text-primary">SB</span>
           </a>
 
           {/* Desktop Navigation */}
