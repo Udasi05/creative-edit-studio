@@ -1,9 +1,9 @@
-import { 
-  Palette, 
-  Film, 
-  Sparkles, 
-  Volume2, 
-  Wand2, 
+import {
+  Palette,
+  Film,
+  Sparkles,
+  Volume2,
+  Wand2,
   MonitorPlay,
   Camera,
   Layers
@@ -38,7 +38,7 @@ const skills = [
   {
     icon: MonitorPlay,
     title: "Compositing",
-    description: "Multi-layer compositing and advanced masking for complex visual scenarios",    
+    description: "Multi-layer compositing and advanced masking for complex visual scenarios",
   },
   {
     icon: Camera,
@@ -64,7 +64,7 @@ const SkillsSection = () => {
             Skills & Knowledge
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive skill set built over years of professional experience 
+            A comprehensive skill set built over years of professional experience
             in video production and post-production
           </p>
         </div>
@@ -73,9 +73,9 @@ const SkillsSection = () => {
           {skills.map((skill, index) => (
             <div
               key={index}
-              className="bg-background p-6 border border-border hover:border-primary/50 transition-all duration-300 group hover:-translate-y-1 rounded-[2rem]"
+              className="bg-background p-6 border border-border hover:border-primary transition-all duration-300 group hover:-translate-y-1 rounded-[2rem]"
             >
-              <div className="w-14 h-14 bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors rounded-2xl">
+              <div className="w-14 h-14 bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/40 transition-colors rounded-2xl">
                 <skill.icon className="w-7 h-7 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-3">

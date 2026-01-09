@@ -51,7 +51,7 @@ const Footer = () => {
               EDITOR<span className="text-primary">SB</span>
             </a>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              Professional video editing services that bring your vision to life 
+              Professional video editing services that bring your vision to life
               with cinematic quality and creative excellence.
             </p>
             <div className="flex gap-3 mt-6">
@@ -60,9 +60,9 @@ const Footer = () => {
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 bg-background border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+                  className="w-12 h-12 bg-background border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all rounded-xl"
                 >
-                  <social.icon className="w-4 h-4" />
+                  <social.icon className="w-5 h-5" />
                 </a>
               ))}
             </div>

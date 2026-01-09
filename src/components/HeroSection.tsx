@@ -74,17 +74,18 @@ const HeroSection = () => {
             </div>
 
             {/* Socials */}
+            {/* Socials */}
             <div className="flex gap-7 mt-6">
-              <a href="https://linkedin.com/in/sahil-bhanushali-148564396" className="w-10 h-10 bg-background border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+              <a href="https://linkedin.com/in/sahil-bhanushali-148564396" className="w-12 h-12 bg-card border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all rounded-xl">
                 <Linkedin size={20} />
               </a>
-              <a href="mailto:sahilbhanushali@gmail.com" className="w-10 h-10 bg-background border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+              <a href="mailto:sahilbhanushalioff2011@gmail.com" className="w-12 h-12 bg-card border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all rounded-xl">
                 <Mail size={20} />
               </a>
-              <a href="https://www.instagram.com/thats.bee.cut?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="w-10 h-10 bg-background border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+              <a href="https://www.instagram.com/thats.bee.cut?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="w-12 h-12 bg-card border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all rounded-xl">
                 <Instagram size={20} />
               </a>
-              <a href="https://x.com/SahilB65552" className="w-10 h-10 bg-background border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+              <a href="https://x.com/SahilB65552" className="w-12 h-12 bg-card border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all rounded-xl">
                 <Twitter size={20} />
               </a>
             </div>

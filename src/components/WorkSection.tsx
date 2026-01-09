@@ -39,6 +39,24 @@ const projects = [
     video: "/Work/TW loop.mp4",
     description: "Wedding video with full post-production",
   },
+  {
+    id: 7,
+    title: "Brand Story",
+    video: "/Work/SB Garment 23.mp4",
+    description: "Compelling brand storytelling and visual narrative",
+  },
+  {
+    id: 8,
+    title: "Travel Vlog",
+    video: "/Work/3D timeline.mov",
+    description: "Fast-paced travel content with engaging transitions",
+  },
+  {
+    id: 9,
+    title: "Product Launch",
+    video: "/Work/Car Reel TBC.mov",
+    description: "Launch video highlighting key product features",
+  },
 ];
 
 const WorkSection = () => {
@@ -64,7 +82,7 @@ const WorkSection = () => {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="group relative overflow-hidden bg-card border border-border hover:border-primary/50 transition-all duration-300 rounded-2xl cursor-pointer"
+              className="group relative overflow-hidden bg-card border border-border hover:border-primary transition-all duration-300 rounded-2xl cursor-pointer"
               onClick={() => setSelectedProject(project)}
             >
               {/* Thumbnail (Video Teaser) */}
