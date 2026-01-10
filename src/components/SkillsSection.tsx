@@ -33,7 +33,7 @@ const skills = [
   {
     icon: Wand2,
     title: "Talking-head & Creator Content",
-    description: "Advanced VFX compositing, green screen work, and special effects creation",
+    description: "Creating engaging and interactive talking-head content for creators",
   },
   {
     icon: MonitorPlay,
