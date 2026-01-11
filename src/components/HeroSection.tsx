@@ -53,7 +53,7 @@ const HeroSection = () => {
               </div>
               <div className="text-center lg:text-left">
                 <p className="text-3xl font-bold text-secondary">
-                  <CountUp to={5} suffix="m+" />
+                  <CountUp to={5000000} from={10000} step={10000} suffix="+" duration={2} />
                 </p>
                 <p className="text-sm text-muted-foreground">Views in Total</p>
               </div>

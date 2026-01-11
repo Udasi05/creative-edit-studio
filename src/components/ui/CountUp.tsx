@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useInView, useMotionValue, useSpring } from "motion/react";
+import { animate, useInView, useMotionValue } from "motion/react";
 
 interface CountUpProps {
     to: number;
@@ -10,42 +10,39 @@ interface CountUpProps {
     className?: string;
     suffix?: string;
     prefix?: string;
+    step?: number;
 }
 
 export const CountUp = ({
     to,
     from = 0,
     delay = 0,
-    duration = 1,
+    duration = 2,
     className = "",
     suffix = "",
     prefix = "",
+    step = 1,
 }: CountUpProps) => {
     const ref = useRef<HTMLSpanElement>(null);
     const motionValue = useMotionValue(from);
-    const springValue = useSpring(motionValue, {
-        damping: 60,
-        stiffness: 100,
-        duration: duration * 100,
-    });
     const isInView = useInView(ref, { once: true, margin: "-50px" });
 
     useEffect(() => {
         if (isInView) {
-            // Small timeout to allow for initial layout/delay
-            setTimeout(() => {
-                motionValue.set(to);
-            }, delay * 100);
+            const controls = animate(motionValue, to, {
+                duration: duration,
+                delay: delay,
+                ease: "easeOut",
+                onUpdate: (latest) => {
+                    if (ref.current) {
+                        const rounded = Math.floor(latest / step) * step;
+                        ref.current.textContent = `${prefix}${rounded}${suffix}`;
+                    }
+                }
+            });
+            return controls.stop;
         }
-    }, [isInView, motionValue, to, delay]);
-
-    useEffect(() => {
-        return springValue.on("change", (latest) => {
-            if (ref.current) {
-                ref.current.textContent = `${prefix}${Math.floor(latest)}${suffix}`;
-            }
-        });
-    }, [springValue, suffix, prefix]);
+    }, [isInView, motionValue, to, delay, duration, step, prefix, suffix]);
 
     return <span ref={ref} className={className} />;
 };
