@@ -8,15 +8,12 @@ import PrivacyPolicy from "./pages/privacypolicy";
 import TermsAndConditions from "./pages/Termsandcondition";
 import NotFound from "./pages/NotFound";
 import { Analytics } from "@vercel/analytics/next"
-import { DoodleBackground } from "./components/ui/DoodleBackground";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-
-      <DoodleBackground />
 
       <BrowserRouter>
         <Routes>
