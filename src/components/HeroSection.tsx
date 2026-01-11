@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Play, ChevronDown, Linkedin, Github, Instagram, Youtube, Clapperboard, Music, Sparkles, Twitter, Mail, Paintbrush } from "lucide-react";
 import heroProfile from "@/assets/photo.jpg";
+import { FloatingBadge } from "./ui/FloatingBadge";
+import { CountUp } from "./ui/CountUp";
 
 const HeroSection = () => {
   const scrollToSection = (href: string) => {
@@ -44,11 +46,15 @@ const HeroSection = () => {
             {/* Stats */}
             <div className="flex items-center justify-center lg:justify-start gap-12 pt-4">
               <div className="text-center lg:text-left">
-                <p className="text-3xl font-bold text-secondary">250+</p>
+                <p className="text-3xl font-bold text-secondary">
+                  <CountUp to={250} suffix="+"/>
+                </p>
                 <p className="text-sm text-muted-foreground">Projects Completed</p>
               </div>
               <div className="text-center lg:text-left">
-                <p className="text-3xl font-bold text-secondary">5m+</p>
+                <p className="text-3xl font-bold text-secondary">
+                  <CountUp to={5000000} suffix="+"/>
+                </p>
                 <p className="text-sm text-muted-foreground">Views in Total</p>
               </div>
             </div>
@@ -106,36 +112,52 @@ const HeroSection = () => {
 
               {/* Floating Badges */}
               {/* Video Editor - Top Left - Higher up */}
-              <div className="absolute top-24 -left-10 md:top-30 md:-left-16 bg-white dark:bg-card p-4 rounded-xl shadow-lg flex items-center gap-3 animate-float delay-100 z-20">
-                <div className="p-2 bg-blue-100 rounded-full text-blue-600">
-                  <Clapperboard size={20} />
-                </div>
-                <span className="font-semibold text-sm md:text-base text-card-foreground">Video Editor</span>
-              </div>
+              <FloatingBadge
+                icon={
+                  <div className="p-2 bg-blue-100 rounded-full text-blue-600">
+                    <Clapperboard size={20} />
+                  </div>
+                }
+                text="Video Editor"
+                className="top-24 -left-10 md:top-30 md:-left-16"
+                delay={0.1}
+              />
 
               {/* Motion Graphics - Bottom Left - Lower down */}
-              <div className="absolute bottom-8 -left-6 md:bottom-12 md:-left-20 bg-white dark:bg-card p-4 rounded-xl shadow-lg flex items-center gap-3 animate-float delay-300 z-20">
-                <div className="p-2 bg-yellow-100 rounded-full text-yellow-600">
-                  <Sparkles size={20} />
-                </div>
-                <span className="font-semibold text-sm md:text-base text-card-foreground">Motion Graphics</span>
-              </div>
+              <FloatingBadge
+                icon={
+                  <div className="p-2 bg-yellow-100 rounded-full text-yellow-600">
+                    <Sparkles size={20} />
+                  </div>
+                }
+                text="Motion Graphics"
+                className="bottom-8 -left-6 md:bottom-12 md:-left-20"
+                delay={0.3}
+              />
 
               {/* Sound Design - Bottom Right - Higher up than Motion Graphics */}
-              <div className="absolute bottom-24 -right-4 md:bottom-32 md:-right-16 bg-white dark:bg-card p-4 rounded-xl shadow-lg flex items-center gap-3 animate-float delay-500 z-20">
-                <div className="p-2 bg-purple-100 rounded-full text-purple-600">
-                  <Music size={20} />
-                </div>
-                <span className="font-semibold text-sm md:text-base text-card-foreground">Sound Design</span>
-              </div>
+              <FloatingBadge
+                icon={
+                  <div className="p-2 bg-purple-100 rounded-full text-purple-600">
+                    <Music size={20} />
+                  </div>
+                }
+                text="Sound Design"
+                className="bottom-24 -right-4 md:bottom-32 md:-right-16"
+                delay={0.5}
+              />
 
               {/* Color Grading - Top Right - Lower down than Video Editor */}
-              <div className="absolute top-2 -right-12 md:top-12 md:-right-16 bg-white dark:bg-card p-4 rounded-xl shadow-lg flex items-center gap-3 animate-float delay-100 z-20">
-                <div className="p-2 bg-gradient-to-br from-pink-500 to-violet-600 rounded-full text-white">
-                  <Paintbrush size={20} />
-                </div>
-                <span className="font-semibold text-sm md:text-base text-card-foreground">Color Grading</span>
-              </div>
+              <FloatingBadge
+                icon={
+                  <div className="p-2 bg-gradient-to-br from-pink-500 to-violet-600 rounded-full text-white">
+                    <Paintbrush size={20} />
+                  </div>
+                }
+                text="Color Grading"
+                className="top-2 -right-12 md:top-12 md:-right-16"
+                delay={0.2}
+              />
             </div>
           </div>
 
