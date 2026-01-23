@@ -8,8 +8,7 @@ import PrivacyPolicy from "./pages/privacypolicy";
 import TermsAndConditions from "./pages/Termsandcondition";
 import NotFound from "./pages/NotFound";
 import { Analytics } from "@vercel/analytics/next"
-import SpeedInsights from "@vercel/speed-insights/react";
-import { DoodleBackground } from "./components/ui/DoodleBackground";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const queryClient = new QueryClient();
 
