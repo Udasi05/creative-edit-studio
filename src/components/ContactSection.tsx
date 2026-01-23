@@ -5,6 +5,35 @@ import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send, Linkedin, Instagram, Youtube, Twitter } from "lucide-react";
 import { toast } from "sonner";
 import { Analytics } from "@vercel/analytics/next"
+
+const contactInfo = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: "sahilbhanushalioff2011@gmail.com",
+    href: "mailto:sahilbhanushalioff2011@gmail.com",
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+91 7506236961",
+    href: "tel:+917506236961",
+  },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: "Mumbai, Maharashtra, India",
+    href: "https://www.google.com/maps/place/Mumbai",
+  },
+];
+
+const socialLinks = [
+  { icon: Linkedin, href: "https://linkedin.com/in/sahil-bhanushali-148564396", label: "LinkedIn" },
+  { icon: Instagram, href: "https://www.instagram.com/thats.bee.cut?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
+  { icon: Twitter, href: "https://x.com/SahilB65552", label: "Twitter" },
+  { icon: Mail, href: "mailto:sahilbhanushalioff2011@gmail.com", label: "Email" },
+];
+
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -52,34 +81,6 @@ const ContactSection = () => {
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "sahilbhanushalioff2011@gmail.com",
-      href: "mailto:sahilbhanushalioff2011@gmail.com",
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+91 7506236961",
-      href: "tel:+917506236961",
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "Mumbai, Maharashtra, India",
-      href: "https://www.google.com/maps/place/Mumbai",
-    },
-  ];
-
-  const socialLinks = [
-    { icon: Linkedin, href: "https://linkedin.com/in/sahil-bhanushali-148564396", label: "LinkedIn" },
-    { icon: Instagram, href: "https://www.instagram.com/thats.bee.cut?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
-    { icon: Twitter, href: "https://x.com/SahilB65552", label: "Twitter" },
-    { icon: Mail, href: "mailto:sahilbhanushalioff2011@gmail.com", label: "Email" },
-  ];
 
   return (
     <section id="contact" className="py-24 bg-background">
