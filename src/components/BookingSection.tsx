@@ -1,6 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Calendar, Video, CheckCircle2 } from "lucide-react";
 import { Analytics } from "@vercel/analytics/next"
+
+declare global {
+  interface Window {
+    Calendly?: {
+      initInlineWidget: (options: {
+        url: string;
+        parentElement: HTMLElement;
+      }) => void;
+    };
+  }
+}
+
 const benefits = [
   "Free 30-minute consultation",
   "Discuss your project requirements",
@@ -9,20 +21,42 @@ const benefits = [
 ];
 
 const BookingSection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    // Load Calendly widget script
-    const script = document.createElement("script");
-    script.src = "https://assets.calendly.com/assets/external/widget.js";
-    script.async = true;
-    document.body.appendChild(script);
+    const scriptSrc = "https://assets.calendly.com/assets/external/widget.js";
+    const existingScript = document.querySelector(
+      `script[src="${scriptSrc}"]`,
+    ) as HTMLScriptElement | null;
+
+    const initWidget = () => {
+      if (window.Calendly && containerRef.current) {
+        window.Calendly.initInlineWidget({
+          url: "https://calendly.com/sahilbhanushalioff2011/new-meeting",
+          parentElement: containerRef.current,
+        });
+      }
+    };
+
+    if (!existingScript) {
+      // Load Calendly widget script
+      const script = document.createElement("script");
+      script.src = scriptSrc;
+      script.async = true;
+      script.onload = initWidget;
+      document.body.appendChild(script);
+    } else {
+      // Script already loaded or loading
+      if (window.Calendly) {
+        initWidget();
+      } else {
+        existingScript.addEventListener("load", initWidget);
+      }
+    }
 
     return () => {
-      // Cleanup script on unmount
-      const existingScript = document.querySelector(
-        'script[src="https://assets.calendly.com/assets/external/widget.js"]',
-      );
       if (existingScript) {
-        existingScript.remove();
+        existingScript.removeEventListener("load", initWidget);
       }
     };
   }, []);
@@ -76,8 +110,7 @@ const BookingSection = () => {
             <div className="lg:col-span-2">
               <div className="bg-background border border-border overflow-hidden rounded-2xl">
                 <div
-                  className="calendly-inline-widget"
-                  data-url="https://calendly.com/sahilbhanushalioff2011/new-meeting"
+                  ref={containerRef}
                   style={{ minWidth: "320px", height: "700px" }}
                 />
 
