@@ -8,6 +8,8 @@ import PrivacyPolicy from "./pages/privacypolicy";
 import TermsAndConditions from "./pages/Termsandcondition";
 import NotFound from "./pages/NotFound";
 import { Analytics } from "@vercel/analytics/next"
+import SpeedInsights from "@vercel/speed-insights/react";
+import { DoodleBackground } from "./components/ui/DoodleBackground";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +28,8 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+
+      <SpeedInsights />
     </TooltipProvider>
   </QueryClientProvider>
 );
