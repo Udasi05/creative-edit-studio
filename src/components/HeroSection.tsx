@@ -107,7 +107,7 @@ const HeroSection = () => {
                   src={heroProfile}
                   alt="Anish Profile"
                   className="w-full h-full object-cover object-top"
-                  fetchpriority="high"
+                  fetchPriority="high"
                 />
               </div>
 
