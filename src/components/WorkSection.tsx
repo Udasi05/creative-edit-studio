@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Play } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 
@@ -59,6 +59,71 @@ const projects = [
   },
 ];
 
+const ProjectCard = ({
+  project,
+  onClick,
+}: {
+  project: (typeof projects)[0];
+  onClick: () => void;
+}) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          // Auto-play was prevented, or user hovered out quickly
+          console.debug("Playback prevented:", error);
+        });
+      }
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
+  };
+
+  return (
+    <div
+      className="group relative overflow-hidden bg-card border border-border hover:border-primary transition-all duration-300 rounded-2xl cursor-pointer"
+      onClick={onClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* Thumbnail (Video Teaser) */}
+      <div className="relative aspect-video overflow-hidden">
+        <video
+          ref={videoRef}
+          src={project.video}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          muted
+          loop
+          playsInline
+        />
+        <div className="absolute inset-0 bg-background/50 group-hover:bg-background/40 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+          <div className="w-16 h-16 rounded-full bg-primary/90 text-primary-foreground flex items-center justify-center backdrop-blur-sm shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
+            <Play size={24} fill="currentColor" />
+          </div>
+        </div>
+      </div>
+
+      {/* Info */}
+      <div className="p-6">
+        <span className="text-primary text-sm font-medium color-orange-500"></span>
+        <h3 className="text-xl font-semibold text-foreground mt-2 mb-2 color-orange-100">
+          {project.title}
+        </h3>
+        <p className="text-muted-foreground text-sm color-orange-100">
+          {project.description}
+        </p>
+      </div>
+    </div>
+  );
+};
+
 const WorkSection = () => {
   const [selectedProject, setSelectedProject] = useState<(typeof projects)[0] | null>(null);
 
@@ -80,40 +145,11 @@ const WorkSection = () => {
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
-            <div
+            <ProjectCard
               key={project.id}
-              className="group relative overflow-hidden bg-card border border-border hover:border-primary transition-all duration-300 rounded-2xl cursor-pointer"
+              project={project}
               onClick={() => setSelectedProject(project)}
-            >
-              {/* Thumbnail (Video Teaser) */}
-              <div className="relative aspect-video overflow-hidden">
-                <video
-                  src={project.video}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  muted
-                  loop
-                  autoPlay
-                  playsInline
-                />
-                <div className="absolute inset-0 bg-background/50 group-hover:bg-background/40 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <div className="w-16 h-16 rounded-full bg-primary/90 text-primary-foreground flex items-center justify-center backdrop-blur-sm shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                    <Play size={24} fill="currentColor" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Info */}
-              <div className="p-6">
-                <span className="text-primary text-sm font-medium color-orange-500">
-                </span>
-                <h3 className="text-xl font-semibold text-foreground mt-2 mb-2 color-orange-100">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground text-sm color-orange-100">
-                  {project.description}
-                </p>
-              </div>
-            </div>
+            />
           ))}
         </div>
 
