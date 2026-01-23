@@ -47,13 +47,13 @@ const HeroSection = () => {
             <div className="flex items-center justify-center lg:justify-start gap-12 pt-4">
               <div className="text-center lg:text-left">
                 <p className="text-3xl font-bold text-secondary">
-                  <CountUp to={250} suffix="+"/>
+                  <CountUp to={250} suffix="+" />
                 </p>
                 <p className="text-sm text-muted-foreground">Projects Completed</p>
               </div>
               <div className="text-center lg:text-left">
                 <p className="text-3xl font-bold text-secondary">
-                  <CountUp to={5000000} suffix="+"/>
+                  <CountUp to={5000000} from={10000} step={10000} suffix="+" duration={2} />
                 </p>
                 <p className="text-sm text-muted-foreground">Views in Total</p>
               </div>
@@ -107,6 +107,7 @@ const HeroSection = () => {
                   src={heroProfile}
                   alt="Anish Profile"
                   className="w-full h-full object-cover object-top"
+                  fetchpriority="high"
                 />
               </div>
 
