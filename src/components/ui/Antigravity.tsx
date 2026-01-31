@@ -117,8 +117,10 @@ const AntigravityInner: React.FC<AntigravityProps> = ({
 
         const globalRotation = state.clock.getElapsedTime() * rotationSpeed;
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         particles.forEach((particle: any, i) => {
-            let { t, speed, mx, my, mz, cz, randomRadiusOffset } = particle;
+            const { speed, mx, my, mz, cz, randomRadiusOffset } = particle;
+            let { t } = particle;
 
             t = particle.t += speed / 2;
 
@@ -128,11 +130,11 @@ const AntigravityInner: React.FC<AntigravityProps> = ({
 
             const dx = mx - projectedTargetX;
             const dy = my - projectedTargetY;
-            const dist = Math.sqrt(dx * dx + dy * dy);
+            const distSq = dx * dx + dy * dy;
 
-            let targetPos = { x: mx, y: my, z: mz * depthFactor };
+            const targetPos = { x: mx, y: my, z: mz * depthFactor };
 
-            if (dist < magnetRadius) {
+            if (distSq < magnetRadius * magnetRadius) {
                 const angle = Math.atan2(dy, dx) + globalRotation;
 
                 const wave = Math.sin(t * waveSpeed + angle) * (0.5 * waveAmplitude);
@@ -180,7 +182,7 @@ const AntigravityInner: React.FC<AntigravityProps> = ({
             {particleShape === 'sphere' && <sphereGeometry args={[0.2, 16, 16]} />}
             {particleShape === 'box' && <boxGeometry args={[0.3, 0.3, 0.3]} />}
             {particleShape === 'tetrahedron' && <tetrahedronGeometry args={[0.3]} />}
-            {/* @ts-ignore */}
+            {/* @ts-expect-error - meshBasicMaterial args issue */}
             <meshBasicMaterial color={color} />
         </instancedMesh>
     );
